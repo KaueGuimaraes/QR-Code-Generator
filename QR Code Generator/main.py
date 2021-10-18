@@ -12,15 +12,18 @@ print(line('=', scale))
 while True:
     adress = str(input('\033[33m>\033[m '))
     
-    if verify(adress) == False:
-        while True:
-            header(f'\033[31m"{adress}" is not accessible right now. Are you sure that? (y/n)\033[m', '-', scale)
+    try:
+        if verify(adress) == False:
+            while True:
+                header(f'\033[31m"{adress}" is not accessible right now. Are you sure that? (y/n)\033[m', '-', scale)
 
-            choice = str(input('\033[33m>\033[m '))
-            
-            if choice.lower() == 'y' or 'n':
-                break
-    else:
+                choice = str(input('\033[33m>\033[m '))
+                
+                if choice.lower() == 'y' or 'n':
+                    break
+        else:
+            choice = 'y'
+    except:
         choice = 'y'
     
     if choice == 'y':
