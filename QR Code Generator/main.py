@@ -12,6 +12,10 @@ print(line('=', scale))
 while True:
     adress = str(input('\033[33m>\033[m '))
     
+    if adress.lower() == 'leave' or adress.lower() == 'exit':
+        header('Bye! See you later!', '-', scale)
+        break
+
     try:
         if verify(adress) == False:
             while True:
@@ -19,7 +23,7 @@ while True:
 
                 choice = str(input('\033[33m>\033[m '))
                 
-                if choice.lower() == 'y' or 'n':
+                if choice.lower() == 'y' or choice.lower() == 'n':
                     break
         else:
             choice = 'y'
@@ -44,3 +48,5 @@ while True:
             img.show()
         except:
             header("\033[31mSorry I wanted to show you your QR Code but I can't open it.\033[m")
+
+    header('Type an adress to generate a QR Code (exit to exit)', '=', scale)
